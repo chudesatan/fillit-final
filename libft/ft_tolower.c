@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fhagrave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 17:28:11 by fhagrave          #+#    #+#             */
-/*   Updated: 2018/12/16 17:28:12 by fhagrave         ###   ########.fr       */
+/*   Created: 2019/01/23 17:49:43 by fhagrave          #+#    #+#             */
+/*   Updated: 2019/01/23 17:49:45 by fhagrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+int		ft_tolower(int c)
 {
-	char	*t;
+	unsigned char symb;
 
-	if (s)
+	if (c <= 255 && c >= 0)
 	{
-		t = (char *)s;
-		while (*(t++) != '\0')
-			ft_putchar_fd(*(t - 1), fd);
+		symb = (unsigned char)c;
+		if (symb >= 'A' && symb <= 'Z')
+			return ((int)symb + 'a' - 'A');
 	}
+	return (c);
 }

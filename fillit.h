@@ -31,12 +31,11 @@ typedef	struct	s_tetra_list
 	struct s_tetra_list	*prev;
 }				t_tetra_list;
 
-t_tetra_list	*g_temp = NULL;
-char			*g_line = NULL;
 void			final_message(t_tetra_list **f, char exit_flag);
 int				read_input(int fd, t_tetra_list *node[26]);
 t_tetra_list	*add_tetra_0(void);
-void			solve(t_tetra_list **first_node, t_tetra_list **last_node, int num);
+void			solve(t_tetra_list **first_node,
+t_tetra_list **last_node, int num);
 void			tetra_lstdel(t_tetra_list **alst);
 char			is_valid(t_tetra_list *first_node, t_tetra_list *last_node);
 int				findmax_tetra_size(t_tetra_list *f);
@@ -64,9 +63,11 @@ char			findmin_square_size(int n);
 int				help_norme4(int i, int j, t_tetra_list *tetra, int flag[2]);
 int				check_tetra(t_tetra_list *tetra);
 void			input_tetra(int type_x[4], int type_y[4], t_tetra_list **node);
-void			help_norme3(int type_x[5], int type_y[5], t_tetra_list *node[26],
+void			help_norme3(int type_x[5], int type_y[5],
+t_tetra_list *node[26],
 int num[2]);
-void			help_norme2(int type_x[5], int type_y[5], t_tetra_list *node[26],
+void			help_norme2(int type_x[5], int type_y[5],
+t_tetra_list *node[26],
 int num[2]);
 
 #endif

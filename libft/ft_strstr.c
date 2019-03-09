@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fhagrave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 17:28:11 by fhagrave          #+#    #+#             */
-/*   Updated: 2018/12/16 17:28:12 by fhagrave         ###   ########.fr       */
+/*   Created: 2019/01/24 11:19:42 by fhagrave          #+#    #+#             */
+/*   Updated: 2019/01/24 11:19:42 by fhagrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	char	*t;
+	size_t	size_to_find;
+	size_t	i;
+	size_t	j;
+	char	*h;
 
-	if (s)
+	i = 0;
+	j = 0;
+	size_to_find = ft_strlen(needle);
+	h = (char *)haystack;
+	if (!size_to_find)
+		return (h);
+	while (*(h + i) != '\0')
 	{
-		t = (char *)s;
-		while (*(t++) != '\0')
-			ft_putchar_fd(*(t - 1), fd);
+		while (*(h + i + j) == *(needle + j))
+		{
+			if (j == size_to_find - 1)
+				return (h + i);
+			j++;
+		}
+		j = 0;
+		i++;
 	}
+	return (NULL);
 }

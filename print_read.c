@@ -27,7 +27,8 @@ char	help_norme5(char *flag, t_tetra_list **f, int i, int j)
 		fn = *f;
 		while (fn != NULL)
 		{
-			if ((fn->x[k] + fn->this_x_0 == j) && (fn->y[k] + fn->this_y_0 == i))
+			if ((fn->x[k] + fn->this_x_0 == j) &&
+	(fn->y[k] + fn->this_y_0 == i))
 			{
 				ft_putchar(l);
 				*flag = 1;
@@ -58,7 +59,7 @@ void	print_composition(t_tetra_list **f, int square_size, char c_copy)
 			if ((c_copy = help_norme5(&flag, f, i, j)) != 0)
 				c = c_copy;
 			if (flag != 1 && (c = '.') == '.')
-			ft_putchar(c);
+				ft_putchar(c);
 			j++;
 		}
 		c = '\n';
@@ -77,23 +78,24 @@ t_tetra_list *node[26], int num[2])
 		{
 			input_tetra(type_x, type_y, &node[num[1]]);
 			if (!check_tetra(node[num[1]]))
-			final_message(&node[0], 1);
+				final_message(&node[0], 1);
 			num[1]++;
 			if (num[1] == 26)
-			final_message(&node[0], 1);
+				final_message(&node[0], 1);
 			node[num[1]] = add_tetra(&node[num[1] - 1]);
 			num[0] = 0;
 		}
 		else
-		final_message(&node[0], 1);
+			final_message(&node[0], 1);
 		type_y[4] = 0;
 		type_x[4] = 4;
 	}
 	else
-	final_message(&node[0], 1);
+		final_message(&node[0], 1);
 }
 
-void	help_norme2(int type_x[5], int type_y[5], t_tetra_list *node[26], int num[2])
+void	help_norme2(int type_x[5], int type_y[5],
+t_tetra_list *node[26], int num[2])
 {
 	char	*temp;
 
@@ -118,9 +120,9 @@ void	help_norme2(int type_x[5], int type_y[5], t_tetra_list *node[26], int num[2
 
 int		read_input(int fd, t_tetra_list *node[26])
 {
-	int	type_x[5];
-	int	type_y[5];
-	int	num[2];
+	int		type_x[5];
+	int		type_y[5];
+	int		num[2];
 
 	num[1] = 0;
 	num[0] = 0;
@@ -131,13 +133,13 @@ int		read_input(int fd, t_tetra_list *node[26])
 		help_norme2(type_x, type_y, node, num);
 		type_y[4]++;
 		if (*g_line == '\0')
-		help_norme3(type_x, type_y, node, num);
+			help_norme3(type_x, type_y, node, num);
 		free(g_line);
 	}
 	if (type_y[4] != 4)
-	final_message(&node[0], 1);
+		final_message(&node[0], 1);
 	input_tetra(type_x, type_y, &node[num[1]]);
 	if (!check_tetra(node[num[1]]) || num[0] != 4)
-	final_message(&node[0], 1);
+		final_message(&node[0], 1);
 	return (num[1]);
 }

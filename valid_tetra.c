@@ -28,8 +28,10 @@ char	is_valid(t_tetra_list *first_node, t_tetra_list *last_node)
 			fn = first_node;
 			while (fn != last_node)
 			{
-				if ((fn->x[k] + fn->this_x_0 == last_node->x[m] + last_node->this_x_0) && (fn->y[k] + fn->this_y_0 == last_node->y[m] + last_node->this_y_0))
-				return (0);
+				if ((fn->x[k] + fn->this_x_0 == last_node->x[m] +
+last_node->this_x_0) && (fn->y[k] + fn->this_y_0 ==
+last_node->y[m] + last_node->this_y_0))
+					return (0);
 				fn = fn->next;
 			}
 			m++;

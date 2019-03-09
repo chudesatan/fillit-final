@@ -13,6 +13,9 @@
 #include "fillit.h"
 #include "get_next_line.h"
 
+t_tetra_list	*g_temp = NULL;
+char			*g_line = NULL;
+
 int		main(int argc, char **argv)
 {
 	int				fd;

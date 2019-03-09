@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fhagrave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 17:28:11 by fhagrave          #+#    #+#             */
-/*   Updated: 2018/12/16 17:28:12 by fhagrave         ###   ########.fr       */
+/*   Created: 2018/12/15 17:11:10 by fhagrave          #+#    #+#             */
+/*   Updated: 2018/12/15 17:11:11 by fhagrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*t;
+	char	*str;
+	size_t	i;
+	size_t	len;
 
-	if (s)
+	if (s != NULL && f != NULL)
 	{
-		t = (char *)s;
-		while (*(t++) != '\0')
-			ft_putchar_fd(*(t - 1), fd);
+		i = 0;
+		len = ft_strlen(s);
+		str = ft_strnew(len);
+		if (!str)
+			return (NULL);
+		while (i < len)
+		{
+			str[i] = f((unsigned int)i, s[i]);
+			i++;
+		}
+		return (str);
 	}
+	return (NULL);
 }
