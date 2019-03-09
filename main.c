@@ -13,15 +13,14 @@
 #include "fillit.h"
 #include "get_next_line.h"
 
-t_tetra_list	*g_temp = NULL;
-char			*g_line = NULL;
-
 int		main(int argc, char **argv)
 {
 	int				fd;
 	int				num;
 	t_tetra_list	*node[26];
 
+	g_temp = NULL;
+	g_line = NULL;
 	if (argc == 1)
 		final_message(NULL, 1);
 	if ((fd = open(argv[1], O_RDWR)) == -1)

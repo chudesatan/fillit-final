@@ -31,6 +31,9 @@ typedef	struct	s_tetra_list
 	struct s_tetra_list	*prev;
 }				t_tetra_list;
 
+t_tetra_list	*g_temp;
+char			*g_line;
+
 void			final_message(t_tetra_list **f, char exit_flag);
 int				read_input(int fd, t_tetra_list *node[26]);
 t_tetra_list	*add_tetra_0(void);
